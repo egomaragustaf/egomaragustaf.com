@@ -1,13 +1,15 @@
 {
-  "name": "porto-tailwind",
+  "name": "egomaragustaf.com",
   "version": "1.0.0",
-  "description": "",
+  "description": "Website of Ego",
   "main": "index.js",
   "scripts": {
     "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "website"
+  ],
+  "author": "Ego Maragustaf",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.3.2"
