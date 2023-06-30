@@ -576,16 +576,12 @@ video {
   inset: -0.125rem;
 }
 
-.bottom-0 {
-  bottom: 0px;
+.-bottom-3 {
+  bottom: -0.75rem;
 }
 
 .right-0 {
   right: 0px;
-}
-
-.right-2 {
-  right: 0.5rem;
 }
 
 .top-0 {
@@ -594,74 +590,6 @@ video {
 
 .top-14 {
   top: 3.5rem;
-}
-
-.right-5 {
-  right: 1.25rem;
-}
-
-.right-10 {
-  right: 2.5rem;
-}
-
-.right-14 {
-  right: 3.5rem;
-}
-
-.left-10 {
-  left: 2.5rem;
-}
-
-.left-5 {
-  left: 1.25rem;
-}
-
-.-right-5 {
-  right: -1.25rem;
-}
-
-.right-20 {
-  right: 5rem;
-}
-
-.right-28 {
-  right: 7rem;
-}
-
-.right-32 {
-  right: 8rem;
-}
-
-.right-36 {
-  right: 9rem;
-}
-
-.right-40 {
-  right: 10rem;
-}
-
-.bottom-5 {
-  bottom: 1.25rem;
-}
-
-.bottom-8 {
-  bottom: 2rem;
-}
-
-.bottom-10 {
-  bottom: 2.5rem;
-}
-
-.-bottom-1 {
-  bottom: -0.25rem;
-}
-
-.-bottom-5 {
-  bottom: -1.25rem;
-}
-
-.-bottom-3 {
-  bottom: -0.75rem;
 }
 
 .z-10 {
@@ -728,6 +656,14 @@ video {
 
 .mt-28 {
   margin-top: 7rem;
+}
+
+.mt-80 {
+  margin-top: 20rem;
+}
+
+.mt-40 {
+  margin-top: 10rem;
 }
 
 .flex {
@@ -807,6 +743,22 @@ video {
   transform-origin: top left;
 }
 
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -883,6 +835,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
 }
 
 .rounded-lg {
@@ -1024,6 +980,10 @@ video {
   padding-right: 1rem;
 }
 
+.pt-40 {
+  padding-top: 10rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1123,10 +1083,6 @@ video {
 
 .duration-300 {
   transition-duration: 300ms;
-}
-
-.duration-100 {
-  transition-duration: 100ms;
 }
 
 .ease-in-out {
@@ -1355,6 +1311,10 @@ body {
     margin-bottom: 10rem;
   }
 
+  .md\:mb-56 {
+    margin-bottom: 14rem;
+  }
+
   .md\:mb-6 {
     margin-bottom: 1.5rem;
   }
@@ -1363,12 +1323,16 @@ body {
     margin-bottom: 2rem;
   }
 
+  .md\:mt-40 {
+    margin-top: 10rem;
+  }
+
   .md\:mt-16 {
     margin-top: 4rem;
   }
 
-  .md\:mt-40 {
-    margin-top: 10rem;
+  .md\:mb-16 {
+    margin-bottom: 4rem;
   }
 
   .md\:block {
@@ -1401,14 +1365,6 @@ body {
 
   .md\:w-80 {
     width: 20rem;
-  }
-
-  .md\:w-2\/5 {
-    width: 40%;
-  }
-
-  .md\:w-1\/5 {
-    width: 20%;
   }
 
   .md\:flex-row {
@@ -1466,6 +1422,10 @@ body {
     padding-right: 9rem;
   }
 
+  .md\:pt-40 {
+    padding-top: 10rem;
+  }
+
   .md\:text-left {
     text-align: left;
   }
@@ -1473,11 +1433,6 @@ body {
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
-  }
-
-  .md\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 
   .md\:text-4xl {
@@ -1488,5 +1443,10 @@ body {
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 }

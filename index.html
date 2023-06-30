@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/dist/output.css" />
   </head>
 
-  <body class="bg-slate-950 font-inter text-slate-50">
+  <body class="bg-slate-950 font-inter text-slate-50 scroll-smooth">
     <header
       class="w-full bg-slate-950/50 backdrop-blur top-0 z-50 flex flex-col fixed py-6 border-b border-slate-900"
     >
@@ -87,7 +87,7 @@
     </header>
     <!-- Hero Section Start -->
     <main class="">
-      <section id="hero" class="px-4 md:px-36 mb-16 md:mb-40 mt-28 md:mt-40">
+      <section id="hero" class="px-4 md:px-36 mb-16 mt-28 md:mt-40">
         <div class="md:flex md:flex-row">
           <div id="home" class="">
             <div
@@ -154,8 +154,10 @@
         <div
           class="md:flex items-center justify-end text-slate-500 hidden md:text-3xl hover:text-sky-500 duration-300 md:mt-16"
         >
-          <button id="button-down">
-            <i class="fa-solid fa-arrow-down w-fit"></i>
+          <button id="button-down" class="animate-bounce">
+            <a href="#skill">
+              <i class="fa-solid fa-arrow-down w-fit"></i>
+            </a>
           </button>
         </div>
         <!-- Arrow -->
@@ -166,7 +168,7 @@
       <section id="skill" class="px-4 md:px-36">
         <div
           id="container"
-          class="flex flex-col justify-center items-center md:items-start md:justify-start gap-y-6 md:gap-y-12"
+          class="flex flex-col justify-center items-center md:items-start md:justify-start gap-y-6 md:gap-y-12 md:pt-40"
         >
           <div
             id="tech"
