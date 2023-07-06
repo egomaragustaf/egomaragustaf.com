@@ -13,6 +13,7 @@ function submitContactForm(event) {
   const contactMessagelValue = contactMessageInputElement.value;
 
   const dialogContent = document.getElementById("dialog-content");
+
   dialogContent.innerHTML = `
       <h1>Hello ${contactNameValue}</h1>
       <h2>Thanks for sending me message with your email ${contactEmailValue}</h2>
