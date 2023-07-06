@@ -715,16 +715,12 @@ video {
   width: 100%;
 }
 
-.max-w-4xl {
-  max-width: 56rem;
+.max-w-6xl {
+  max-width: 72rem;
 }
 
 .max-w-md {
   max-width: 28rem;
-}
-
-.max-w-6xl {
-  max-width: 72rem;
 }
 
 .origin-bottom-left {
@@ -757,10 +753,6 @@ video {
 
 .flex-col {
   flex-direction: column;
-}
-
-.items-start {
-  align-items: flex-start;
 }
 
 .items-end {
@@ -801,10 +793,6 @@ video {
 
 .gap-y-6 {
   row-gap: 1.5rem;
-}
-
-.gap-y-4 {
-  row-gap: 1rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -871,6 +859,11 @@ video {
   border-color: rgb(15 23 42 / var(--tw-border-opacity));
 }
 
+.border-slate-950 {
+  --tw-border-opacity: 1;
+  border-color: rgb(2 6 23 / var(--tw-border-opacity));
+}
+
 .border-b-emerald-500 {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(16 185 129 / var(--tw-border-opacity));
@@ -884,6 +877,11 @@ video {
 .border-r-emerald-500 {
   --tw-border-opacity: 1;
   border-right-color: rgb(16 185 129 / var(--tw-border-opacity));
+}
+
+.border-s-slate-950 {
+  --tw-border-opacity: 1;
+  border-inline-start-color: rgb(2 6 23 / var(--tw-border-opacity));
 }
 
 .border-t-indigo-500 {
@@ -908,6 +906,11 @@ video {
 
 .bg-slate-950\/50 {
   background-color: rgb(2 6 23 / 0.5);
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-gradient-to-r {
@@ -1234,6 +1237,10 @@ body {
     margin-top: -3.5rem;
   }
 
+  .md\:mb-4 {
+    margin-bottom: 1rem;
+  }
+
   .md\:mb-40 {
     margin-bottom: 10rem;
   }
@@ -1242,20 +1249,12 @@ body {
     margin-bottom: 1.5rem;
   }
 
-  .md\:mb-8 {
-    margin-bottom: 2rem;
-  }
-
   .md\:mt-16 {
     margin-top: 4rem;
   }
 
   .md\:mt-40 {
     margin-top: 10rem;
-  }
-
-  .md\:mb-4 {
-    margin-bottom: 1rem;
   }
 
   .md\:block {
@@ -1310,10 +1309,6 @@ body {
     justify-content: flex-end;
   }
 
-  .md\:justify-center {
-    justify-content: center;
-  }
-
   .md\:gap-20 {
     gap: 5rem;
   }
@@ -1324,10 +1319,6 @@ body {
 
   .md\:gap-y-12 {
     row-gap: 3rem;
-  }
-
-  .md\:gap-y-6 {
-    row-gap: 1.5rem;
   }
 
   .md\:space-y-2 > :not([hidden]) ~ :not([hidden]) {
