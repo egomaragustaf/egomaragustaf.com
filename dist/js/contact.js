@@ -23,5 +23,9 @@ function submitContactForm(event) {
   const dialog = document.getElementById("dialog");
   dialog.showModal();
 
+  contactNameInputElement.value = "";
+  contactEmailInputElement.value = "";
+  contactMessageInputElement.value = "";
+
   console.log("test");
 }
