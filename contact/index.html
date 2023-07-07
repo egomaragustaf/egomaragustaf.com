@@ -20,18 +20,22 @@
 
   <body class="bg-slate-950 font-inter text-slate-50 scroll-smooth">
     <header
-      class="w-full bg-slate-950/50 backdrop-blur top-0 z-50 flex flex-col fixed py-6 border-b border-slate-900">
+      id="header"
+      class="w-full items-center justify-center mx-auto bg-slate-950/50 backdrop-blur top-0 z-50 flex flex-col fixed py-4 px-4 border-b border-slate-900">
       <div
         class="w-full top-0 fixed h-2 bg-gradient-to-r from-sky-500 to-emerald-500"></div>
-      <!-- Navbar Start -->
-      <nav class="pl-6 pr-2 md:pl-36 flex">
-        <a
-          class="z-50 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-emerald-500"
-          href="/"
-          >EGM</a
-        >
-        <div
-          class="relative w-full flex flex-col justify-end items-center md:justify-end md:items-center md:pr-36">
+
+      <div
+        class="max-w-5xl mx-auto w-full py-2 flex justify-between items-center gap-y-2">
+        <div>
+          <a
+            class="z-50 text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-emerald-500"
+            href="/"
+            >EGM</a
+          >
+        </div>
+
+        <div class="relative w-full flex flex-col justify-end items-center">
           <!-- Hamburger start -->
           <div class="flex items-center w-full justify-end pr-4">
             <button id="hamburger" name="hamburger" class="group md:hidden">
@@ -44,25 +48,27 @@
             </button>
           </div>
           <!-- Hamburger end -->
-          <div
+
+          <nav
             id="nav-menu"
             class="hidden md:block absolute md:static md:bg-transparent bg-slate-950 right-0 top-14">
-            <ul class="flex flex-col gap-2 md:flex-row md:gap-4 text-lg">
-              <li class="mx-4 my-6 flex justify-center items-center md:my-0">
+            <ul
+              class="flex flex-col gap-8 p-4 md:p-0 md:flex-row md:gap-14 text-lg">
+              <li>
                 <a
                   href="/"
                   class="font-semibold text-slate-50 hover:text-sky-500 duration-300"
                   >Home</a
                 >
               </li>
-              <li class="mx-4 my-6 flex justify-center items-center md:my-0">
+              <li>
                 <a
                   href="/about"
                   class="font-semibold text-slate-50 hover:text-sky-500 duration-300">
                   About
                 </a>
               </li>
-              <li class="mx-4 flex justify-center items-center my-6 md:my-0">
+              <li>
                 <a
                   href="/contact"
                   class="font-semibold text-slate-50 hover:text-sky-500 duration-300"
@@ -70,18 +76,17 @@
                 >
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
-      </nav>
-      <!-- Navbar End -->
+      </div>
     </header>
 
     <!-- Contact Section Start -->
     <main>
-      <section id="contact" class="px-4 md:px-36 mb-16 md:mb-40 mt-28 md:mt-40">
+      <section id="contact" class="px-6 mt-28 md:my-40">
         <div
           id="container"
-          class="flex flex-col md:flex-row justify-center items-center md:items-start md:justify-start">
+          class="w-full max-w-5xl mx-auto flex flex-col md:flex-row justify-center items-center md:items-start md:justify-start">
           <div class="flex flex-col gap-8 w-2/3">
             <div
               id="contact-title"

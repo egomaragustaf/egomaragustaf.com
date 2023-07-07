@@ -846,14 +846,6 @@ video {
   scroll-behavior: smooth;
 }
 
-.text-ellipsis {
-  text-overflow: ellipsis;
-}
-
-.text-clip {
-  text-overflow: clip;
-}
-
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -1008,10 +1000,6 @@ video {
 
 .text-center {
   text-align: center;
-}
-
-.text-justify {
-  text-align: justify;
 }
 
 .text-2xl {
