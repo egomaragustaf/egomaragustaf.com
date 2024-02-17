@@ -13,7 +13,7 @@ export default function Index() {
     <div className="flex justify-center items-center h-screen">
       <main className="w-full max-w-3xl text-center space-y-2">
         <h1 className="text-xl">Hi!</h1>
-        <h2>I'm Ego Maragustaf</h2>
+        <h2 className="text-indigo-700">I'm Ego Maragustaf</h2>
         <p>This is my personal website with Remix.</p>
         <div className="space-x-2">
           <Button>Contact Me</Button>
