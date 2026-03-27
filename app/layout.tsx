@@ -1,9 +1,12 @@
+import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import Navbar from "@/components/navbar";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +29,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased relative",
+          "antialiased",
+          geistSans.variable,
+          geistMono.variable,
+          "font-sans",
+          inter.variable,
+        )}>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <TooltipProvider delayDuration={0}>
+            <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
+              {children}
+            </div>
+
+            <Navbar />
+          </TooltipProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
