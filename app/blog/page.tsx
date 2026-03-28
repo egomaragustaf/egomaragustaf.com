@@ -1,12 +1,15 @@
+import BlurFade from "@/components/blur-fade";
+import { BLUR_FADE_DELAY } from "../config/config-ui";
+
 export default function Blog() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-          Blog
-        </h1>
-        <p>Software Engineer</p>
-      </main>
-    </div>
+    <section id="blog">
+      <BlurFade delay={BLUR_FADE_DELAY}>
+        <h1 className="text-2xl font-semibold tracking-tight mb-2">Blog </h1>
+        <p className="text-sm text-muted-foreground mb-8">
+          My thoughts on software development, life, and more.
+        </p>
+      </BlurFade>
+    </section>
   );
 }

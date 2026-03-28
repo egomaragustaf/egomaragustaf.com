@@ -6,11 +6,12 @@ export const DATA = {
   initials: "EGM",
   url: "https://egomaragustaf.com",
   description:
-    "Software Engineer that love building things and helping people.",
+    "Software Engineer that love building things and design. I like solving problems and learning new things.",
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
   ],
+  avatarUrl: "/me.webp",
   contact: {
     social: {
       GitHub: {

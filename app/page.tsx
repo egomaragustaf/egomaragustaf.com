@@ -15,7 +15,7 @@ export default function Home() {
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
                 yOffset={8}
-                text={`Hello 👋, I'm ${DATA.name.split(" ")[0]}`}
+                text={`Hello, I'm ${DATA.name.split(" ")[0]} 👋`}
               />
               <BlurFadeText
                 className="text-muted-foreground max-w-150 md:text-lg lg:text-xl"
@@ -25,7 +25,11 @@ export default function Home() {
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
               <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
-                {/* <AvatarImage alt={DATA.name} src={DATA.avatarUrl} /> */}
+                <AvatarImage
+                  alt={DATA.name}
+                  src={DATA.avatarUrl}
+                  className="grayscale"
+                />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
             </BlurFade>
