@@ -82,8 +82,14 @@ export default function WorkSection() {
               </div>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="w-full flex p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
-            <p>{work.description}</p>
+          <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
+            <p>{work.description.role}</p>
+            <p className="font-semibold mt-2">Responsibilities:</p>
+            <ul className="list-disc mt-2 space-y-1">
+              {work.description.responsibilities.map((resp) => (
+                <li key={resp}>{resp}</li>
+              ))}
+            </ul>
           </AccordionContent>
         </AccordionItem>
       ))}

@@ -49,8 +49,17 @@ export const DATA = {
       logoUrl: "/siloam-hospitals-logo.jpeg",
       start: "Sep 2024",
       end: null,
-      description:
-        "I am currently working at Siloam Hospitals as a Fullstack Developer.",
+      description: {
+        role: "I am currently working at Siloam Hospitals as a Fullstack Developer.",
+        responsibilities: [
+          "Developed an inpatient management application using Next.js, Node.js, and TypeScript, deployed across 10+ hospital units in Indonesia.",
+          "Developed a payment system application using Angular and TypeScript.",
+          "Maintained and refactored legacy codebases to improve readability, modularity, and reusability.",
+          "Delivered pull requests that consistently passed SonarQube quality checks with zero issues.",
+          "Implemented unit testing using Jest with over 90% test coverage in each pull request.",
+          "Optimized invoice generation for large datasets (5000+ items) using jsPDF, reducing processing time from minutes to under 30 seconds.",
+        ],
+      },
     },
     {
       company: "Platon",
@@ -61,7 +70,13 @@ export const DATA = {
       logoUrl: "/platon-logo.jpeg",
       start: "Feb 2024",
       end: "Aug 2024",
-      description: "I worked at Platon as a Fullstack Developer.",
+      description: {
+        role: "I worked at Platon as a Fullstack Developer.",
+        responsibilities: [
+          "Developed a logistics dashboard for PT Berkat Karimar Mandiri (BKM) to support staff and driver reporting workflows using Next.js and Mantine UI (bkmtranslog.co.id).",
+          "Designed and implemented RESTful services using Express.js and TypeScript to support application scalability and backend integration.",
+        ],
+      },
     },
     {
       company: "Catamyst",
@@ -72,7 +87,12 @@ export const DATA = {
       logoUrl: "/catamyst-logo.jpeg",
       start: "Jun 2023",
       end: "Jan 2024",
-      description: "I worked at Catamyst as a Frontend Developer.",
+      description: {
+        role: "I worked at Catamyst as a Frontend Developer.",
+        responsibilities: [
+          "Built an e-commerce web application with a focus on user experience, performance, and responsive design using Remix and Tailwind CSS.",
+        ],
+      },
     },
   ],
 };
