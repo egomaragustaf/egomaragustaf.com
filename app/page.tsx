@@ -3,6 +3,7 @@ import { BLUR_FADE_DELAY } from "./config/config-ui";
 import { DATA } from "./data/resume";
 import BlurFade from "@/components/blur-fade";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import WorkSection from "@/components/section/work";
 
 export default function Home() {
   return (
@@ -34,6 +35,17 @@ export default function Home() {
               </Avatar>
             </BlurFade>
           </div>
+        </div>
+      </section>
+
+      <section id="work-experience">
+        <div className="flex min-h-0 flex-col gap-y-6">
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <h2 className="text-xl font-bold">Work Experience</h2>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+            <WorkSection />
+          </BlurFade>
         </div>
       </section>
     </main>
