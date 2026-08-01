@@ -11,7 +11,7 @@ const generalLinks = [
 export default function Footer() {
   const resources = Object.entries(DATA.contact.social);
   return (
-    <footer className="mt-8 border-t border-border pt-6">
+    <footer className="mt-24 sm:mt-32 border-t border-border pt-6">
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         <div className="flex flex-col gap-1">
           <p className="font-semibold">{DATA.name}</p>
