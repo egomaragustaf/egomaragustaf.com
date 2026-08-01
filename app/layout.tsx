@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/section/footer";
 import { FlickeringGrid } from "@/components/flickering-grid";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -42,26 +43,28 @@ export default function RootLayout({
           inter.variable,
         )}>
         <ThemeProvider attribute="class" defaultTheme="system">
-          <TooltipProvider delayDuration={0}>
-            <div className="absolute inset-0 top-0 left-0 right-0 h-25 overflow-hidden z-0">
-              <FlickeringGrid
-                className="h-full w-full"
-                squareSize={2}
-                gridGap={2}
-                style={{
-                  maskImage: "linear-gradient(to bottom, black, transparent)",
-                  WebkitMaskImage:
-                    "linear-gradient(to bottom, black, transparent)",
-                }}
-              />
-            </div>
-            <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
-              {children}
-              <Footer />
-            </div>
+          <NuqsAdapter>
+            <TooltipProvider delayDuration={0}>
+              <div className="absolute inset-0 top-0 left-0 right-0 h-25 overflow-hidden z-0">
+                <FlickeringGrid
+                  className="h-full w-full"
+                  squareSize={2}
+                  gridGap={2}
+                  style={{
+                    maskImage: "linear-gradient(to bottom, black, transparent)",
+                    WebkitMaskImage:
+                      "linear-gradient(to bottom, black, transparent)",
+                  }}
+                />
+              </div>
+              <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
+                {children}
+                <Footer />
+              </div>
 
-            <Navbar />
-          </TooltipProvider>
+              <Navbar />
+            </TooltipProvider>
+          </NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>
