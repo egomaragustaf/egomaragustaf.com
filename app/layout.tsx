@@ -5,6 +5,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/section/footer";
 import { FlickeringGrid } from "@/components/flickering-grid";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -56,6 +57,7 @@ export default function RootLayout({
             </div>
             <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
               {children}
+              <Footer />
             </div>
 
             <Navbar />
