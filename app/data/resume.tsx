@@ -85,7 +85,7 @@ export const DATA = {
       location: "Remote",
       title: "Frontend Developer",
       logoUrl: "/catamyst-logo.jpeg",
-      start: "Jun 2023",
+      start: "Jan 2023",
       end: "Jan 2024",
       description: {
         role: "I worked at Catamyst as a Frontend Developer.",
