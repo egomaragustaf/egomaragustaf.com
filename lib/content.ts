@@ -6,7 +6,8 @@ export type Project = {
   slug: string;
   title: string;
   description: string;
-  href: string;
+  website?: string;
+  github?: string;
   image: string;
   date: string;
   tags: string[];
@@ -17,7 +18,7 @@ export type Post = {
   slug: string;
   title: string;
   description: string;
-  href: string;
+  image?: string;
   date: string;
   tags: string[];
   featured: boolean;
@@ -49,7 +50,8 @@ export function getAllProjects(): Project[] {
       slug,
       title: String(data.title ?? ""),
       description: String(data.description ?? ""),
-      href: String(data.href ?? ""),
+      website: data.website ? String(data.website) : undefined,
+      github: data.github ? String(data.github) : undefined,
       image: String(data.image ?? ""),
       date: String(data.date ?? ""),
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
@@ -64,7 +66,7 @@ export function getAllPosts(): Post[] {
       slug,
       title: String(data.title ?? ""),
       description: String(data.description ?? ""),
-      href: String(data.href ?? ""),
+      image: data.image ? String(data.image) : undefined,
       date: String(data.date ?? ""),
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
       featured: Boolean(data.featured ?? false),
