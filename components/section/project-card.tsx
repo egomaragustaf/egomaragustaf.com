@@ -37,7 +37,7 @@ export function ProjectCard({
             alt={project.title}
             fill
             sizes="(max-width: 640px) 100vw, 20rem"
-            className="object-cover transition-transform duration-300 ease-out group-hover/card:scale-[1.02] motion-reduce:transition-none"
+            className="object-cover transition-transform duration-200 ease-out group-hover/card:scale-[1.02] motion-reduce:transition-none"
           />
         ) : null}
       </div>
