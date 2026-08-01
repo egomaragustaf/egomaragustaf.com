@@ -6,6 +6,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { getAllPosts } from "@/lib/content";
 import { formatDate } from "@/lib/format";
+import { BackButton } from "@/components/section/back-button";
 
 export const dynamicParams = false;
 
@@ -51,6 +52,7 @@ export default async function Page({
   const { default: PostBody } = await import(`@/content/posts/${slug}.mdx`);
   return (
     <>
+      <BackButton label="Back to blog" />
       {post.image ? (
         <header className="relative aspect-[16/9] w-full overflow-hidden rounded-xl">
           <Image
