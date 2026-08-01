@@ -80,7 +80,7 @@ export function PostCard({ post, featured = false }: { post: Post; featured?: bo
       ) : null}
       <div className="flex min-w-0 flex-1 flex-col gap-0.5">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="line-clamp-1 font-semibold leading-tight">{post.title}</h3>
+          <h3 className="text-sm font-medium leading-snug text-foreground">{post.title}</h3>
           <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 motion-reduce:transition-none" />
         </div>
         <p className="line-clamp-1 text-sm text-muted-foreground">{post.description}</p>
