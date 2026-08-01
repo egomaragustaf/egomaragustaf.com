@@ -4,8 +4,13 @@ import { DATA } from "./data/resume";
 import BlurFade from "@/components/blur-fade";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import WorkSection from "@/components/section/work";
+import { getFeaturedProject, getFeaturedPost } from "@/lib/content";
+import { ProjectCard } from "@/components/section/project-card";
+import { PostCard } from "@/components/section/post-card";
 
 export default function Home() {
+  const featuredProject = getFeaturedProject();
+  const featuredPost = getFeaturedPost();
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
       <section id="hero">
@@ -48,6 +53,32 @@ export default function Home() {
           </BlurFade>
         </div>
       </section>
+
+      {featuredProject ? (
+        <section id="featured-project">
+          <div className="flex min-h-0 flex-col gap-y-6">
+            <BlurFade delay={BLUR_FADE_DELAY * 7}>
+              <h2 className="text-xl font-bold">Featured Project</h2>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 8}>
+              <ProjectCard project={featuredProject} featured />
+            </BlurFade>
+          </div>
+        </section>
+      ) : null}
+
+      {featuredPost ? (
+        <section id="featured-post">
+          <div className="flex min-h-0 flex-col gap-y-6">
+            <BlurFade delay={BLUR_FADE_DELAY * 9}>
+              <h2 className="text-xl font-bold">Featured Post</h2>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 10}>
+              <PostCard post={featuredPost} featured />
+            </BlurFade>
+          </div>
+        </section>
+      ) : null}
     </main>
   );
 }
