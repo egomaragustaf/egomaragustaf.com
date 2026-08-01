@@ -1,5 +1,6 @@
+import { Suspense } from "react";
 import BlurFade from "@/components/blur-fade";
-import { PostCard } from "@/components/section/post-card";
+import { BlogList } from "@/components/section/blog-list";
 import { BLUR_FADE_DELAY } from "../config/config-ui";
 import { getAllPosts } from "@/lib/content";
 
@@ -19,11 +20,9 @@ export default function Blog() {
         </p>
       </BlurFade>
       <BlurFade delay={BLUR_FADE_DELAY * 5}>
-        <div className="flex flex-col gap-3">
-          {posts.map((p) => (
-            <PostCard key={p.slug} post={p} />
-          ))}
-        </div>
+        <Suspense fallback={<div className="text-sm text-muted-foreground">Loading…</div>}>
+          <BlogList posts={posts} />
+        </Suspense>
       </BlurFade>
     </section>
   );
