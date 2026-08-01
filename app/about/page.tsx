@@ -29,7 +29,7 @@ export default function Blog() {
           </p>
           <p>
             I work mostly with JavaScript and TypeScript to building things for
-            web and application. I like learning new things, whether that's
+            web and application. I like learning new things, whether that&apos;s
             picking up a new concept, solving problems on LeetCode, or just
             starting a side project to see where it goes.
           </p>
