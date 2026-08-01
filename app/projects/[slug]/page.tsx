@@ -7,6 +7,8 @@ import { Globe } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { getAllProjects } from "@/lib/content";
 import { BackButton } from "@/components/section/back-button";
+import BlurFade from "@/components/blur-fade";
+import { BLUR_FADE_DELAY } from "../../config/config-ui";
 
 export const dynamicParams = false;
 
@@ -52,8 +54,11 @@ export default async function Page({
   const { default: Project } = await import(`@/content/projects/${slug}.mdx`);
   return (
     <>
-      <BackButton label="Back to projects" />
-      <article className="prose dark:prose-invert max-w-none">
+      <BlurFade delay={BLUR_FADE_DELAY}>
+        <BackButton label="Back to projects" />
+      </BlurFade>
+      <BlurFade delay={BLUR_FADE_DELAY * 2}>
+        <article className="prose dark:prose-invert max-w-none">
         <h1>{project.title}</h1>
         <p className="not-prose text-sm text-muted-foreground">{project.description}</p>
         <Project />
@@ -83,7 +88,8 @@ export default async function Page({
             ) : null}
           </div>
         ) : null}
-      </article>
+        </article>
+      </BlurFade>
     </>
   );
 }
