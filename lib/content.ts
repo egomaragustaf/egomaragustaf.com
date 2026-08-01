@@ -1,0 +1,81 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+export type Project = {
+  slug: string;
+  title: string;
+  description: string;
+  href: string;
+  image: string;
+  date: string;
+  tags: string[];
+  featured: boolean;
+};
+
+export type Post = {
+  slug: string;
+  title: string;
+  description: string;
+  href: string;
+  date: string;
+  tags: string[];
+  featured: boolean;
+};
+
+const PROJECTS_DIR = path.join(process.cwd(), "content", "projects");
+const POSTS_DIR = path.join(process.cwd(), "content", "posts");
+
+function readDir(dir: string): { slug: string; data: Record<string, unknown> }[] {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => {
+      const slug = f.replace(/\.mdx$/, "");
+      const raw = fs.readFileSync(path.join(dir, f), "utf8");
+      const { data } = matter(raw);
+      return { slug, data };
+    });
+}
+
+function byDateDesc<T extends { date: string }>(a: T, b: T): number {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+}
+
+export function getAllProjects(): Project[] {
+  return readDir(PROJECTS_DIR)
+    .map(({ slug, data }) => ({
+      slug,
+      title: String(data.title ?? ""),
+      description: String(data.description ?? ""),
+      href: String(data.href ?? ""),
+      image: String(data.image ?? ""),
+      date: String(data.date ?? ""),
+      tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
+      featured: Boolean(data.featured ?? false),
+    }))
+    .sort(byDateDesc);
+}
+
+export function getAllPosts(): Post[] {
+  return readDir(POSTS_DIR)
+    .map(({ slug, data }) => ({
+      slug,
+      title: String(data.title ?? ""),
+      description: String(data.description ?? ""),
+      href: String(data.href ?? ""),
+      date: String(data.date ?? ""),
+      tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
+      featured: Boolean(data.featured ?? false),
+    }))
+    .sort(byDateDesc);
+}
+
+export function getFeaturedProject(): Project | null {
+  return getAllProjects().find((p) => p.featured) ?? null;
+}
+
+export function getFeaturedPost(): Post | null {
+  return getAllPosts().find((p) => p.featured) ?? null;
+}
