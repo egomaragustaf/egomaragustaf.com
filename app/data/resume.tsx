@@ -1,5 +1,6 @@
 import { Icons } from "@/components/icon";
-import { HomeIcon, NotebookIcon, Users } from "lucide-react";
+import { Code, HomeIcon, NotebookIcon, Users } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa6";
 import {
   SiAngular,
   SiNestjs,
@@ -7,6 +8,7 @@ import {
   SiNodedotjs,
   SiReact,
   SiTypescript,
+  SiX,
 } from "react-icons/si";
 
 export const DATA = {
@@ -19,6 +21,7 @@ export const DATA = {
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/about", icon: Users, label: "About" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
+    { href: "/projects", icon: Code, label: "Projects" },
   ],
   avatarUrl: "/me.webp",
   skills: [
@@ -36,6 +39,18 @@ export const DATA = {
         url: "https://github.com/egomaragustaf",
         icon: Icons.github,
         navbar: true,
+      },
+      LinkedIn: {
+        name: "LinkedIn",
+        url: "https://linkedin.com/in/egomaragustaf",
+        icon: FaLinkedin,
+        navbar: false,
+      },
+      X: {
+        name: "X",
+        url: "https://x.com/egomaragustaf",
+        icon: SiX,
+        navbar: false,
       },
     },
   },
