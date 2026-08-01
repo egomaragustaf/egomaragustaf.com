@@ -34,22 +34,61 @@ function Chip({
 
 export function BlogList({ posts }: { posts: Post[] }) {
   const [tag, setTag] = useQueryState("tag", { defaultValue: "", shallow: true });
+  const [q, setQ] = useQueryState("q", {
+    defaultValue: "",
+    shallow: true,
+    history: "replace",
+  });
   const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
 
   const allTags = Array.from(new Set(posts.flatMap((p) => p.tags))).sort();
-  const filtered = tag ? posts.filter((p) => p.tags.includes(tag)) : posts;
+  const needle = q.trim().toLowerCase();
+  const filtered = posts.filter((p) => {
+    const matchesTag = !tag || p.tags.includes(tag);
+    const matchesQ =
+      !needle ||
+      p.title.toLowerCase().includes(needle) ||
+      p.description.toLowerCase().includes(needle) ||
+      p.tags.some((t) => t.toLowerCase().includes(needle));
+    return matchesTag && matchesQ;
+  });
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const current = Math.min(page, totalPages);
   const shown = filtered.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
 
   return (
     <div className="flex flex-col gap-4">
+      <input
+        type="search"
+        value={q}
+        onChange={(e) => {
+          setQ(e.target.value);
+          setPage(1);
+        }}
+        placeholder="Search posts…"
+        aria-label="Search posts"
+        className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none transition-colors placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+      />
+
       <div className="flex flex-wrap gap-1.5">
-        <Chip active={tag === ""} onClick={() => { setTag(""); setPage(1); }}>
+        <Chip
+          active={tag === ""}
+          onClick={() => {
+            setTag("");
+            setPage(1);
+          }}
+        >
           All
         </Chip>
         {allTags.map((t) => (
-          <Chip key={t} active={tag === t} onClick={() => { setTag(t); setPage(1); }}>
+          <Chip
+            key={t}
+            active={tag === t}
+            onClick={() => {
+              setTag(t);
+              setPage(1);
+            }}
+          >
             {t}
           </Chip>
         ))}
