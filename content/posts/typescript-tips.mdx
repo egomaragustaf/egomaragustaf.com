@@ -1,0 +1,48 @@
+---
+title: "Five TypeScript Tips I Wish I Knew Earlier"
+description: "Discriminated unions, satisfies, const type parameters, and a couple of lint rules that catch real bugs."
+date: "2026-06-10"
+tags: ["typescript"]
+featured: false
+image: "/project-placeholder.webp"
+---
+
+## 1. Use `satisfied` instead of type annotations
+
+```ts
+const config = {
+  port: 3000,
+  host: "localhost",
+} satisfies ServerConfig;
+```
+
+You keep the literal types *and* verify the shape.
+
+## 2. Discriminated unions beat optional fields
+
+Model state explicitly:
+
+```ts
+type State =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "error"; error: string };
+```
+
+The compiler narrows for you.
+
+## 3. const type parameters
+
+```ts
+function first<T const>(xs: readonly T[]): T | undefined {
+  return xs[0];
+}
+```
+
+## 4. Enable noUncheckedIndexedAccess
+
+It's annoying for ten minutes and saves you forever.
+
+## 5. Don't fight the inferred type
+
+If the compiler says a type is `string | undefined`, it's telling you the truth. Don't `as string` it away.

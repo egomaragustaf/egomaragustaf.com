@@ -1,0 +1,20 @@
+---
+title: "What I Learned Building a Small Design System"
+description: "Tokens, primitives, and the discipline to delete. Notes from shipping a tiny component library at work."
+date: "2026-05-02"
+tags: ["design", "react"]
+featured: false
+image: "/project-placeholder.webp"
+---
+
+## Tokens first
+
+Before any component, settle on color, spacing, radius, and typography tokens. Everything else composes from them. If two components disagree, the tokens are wrong — not the components.
+
+## Primitives over features
+
+A `Button`, `Input`, and `Card` cover 80% of what you need. Resist building a `UserCard` or `ProductRow` in the library — those belong to the product, not the system.
+
+## Delete more than you add
+
+Every component is a maintenance liability. If something hasn't been used in three months, delete it. Git remembers.
