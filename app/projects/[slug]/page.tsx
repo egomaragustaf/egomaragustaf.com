@@ -1,8 +1,4 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import path from "path";
-import fs from "fs";
-import matter from "gray-matter";
 import { Globe } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { getAllProjects } from "@/lib/content";
@@ -16,31 +12,6 @@ type Params = { slug: string };
 
 export function generateStaticParams(): { slug: string }[] {
   return getAllProjects().map((p) => ({ slug: p.slug }));
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<Params>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const file = path.join(process.cwd(), "content", "projects", `${slug}.mdx`);
-  if (!fs.existsSync(file)) return {};
-  const { data } = matter(fs.readFileSync(file, "utf8"));
-  const image = data.image ? String(data.image) : undefined;
-  return {
-    title: String(data.title ?? slug),
-    description: String(data.description ?? ""),
-    openGraph: {
-      title: String(data.title ?? slug),
-      description: String(data.description ?? ""),
-      images: image ? [{ url: image }] : undefined,
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: image ? [image] : undefined,
-    },
-  };
 }
 
 export default async function Page({
