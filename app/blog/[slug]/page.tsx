@@ -14,11 +14,7 @@ export function generateStaticParams(): { slug: string }[] {
   return getAllPosts().map((p) => ({ slug: p.slug }));
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<Params>;
-}) {
+export default async function Page({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const post = getAllPosts().find((p) => p.slug === slug);
   if (!post) notFound();
@@ -26,7 +22,7 @@ export default async function Page({
   return (
     <>
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <BackButton label="Back to blog" />
+        <BackButton label="Back" />
       </BlurFade>
       {post.image ? (
         <BlurFade delay={BLUR_FADE_DELAY * 2}>
