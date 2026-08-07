@@ -23,7 +23,7 @@ export default function Footer() {
             <Link
               key={l.href}
               href={l.href}
-              className="w-fit text-sm text-muted-foreground transition-colors hover:text-foreground active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+              className="w-fit text-xs text-muted-foreground transition-colors hover:text-foreground active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
             >
               {l.label}
             </Link>
@@ -37,7 +37,7 @@ export default function Footer() {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-sm text-muted-foreground transition-colors hover:text-foreground active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
+              className="w-fit text-xs text-muted-foreground transition-colors hover:text-foreground active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
             >
               {name}
             </a>
