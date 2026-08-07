@@ -21,7 +21,7 @@ function Chip({
       type="button"
       onClick={onClick}
       className={cn(
-        "rounded-full border px-3 py-1 text-xs transition-colors active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",
+        "rounded-full border px-3 py-1 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",
         active
           ? "border-foreground/20 bg-muted text-foreground"
           : "border-border text-muted-foreground hover:text-foreground hover:bg-muted",
@@ -109,7 +109,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
             disabled={current <= 1}
             onClick={() => setPage(current - 1)}
             className={cn(
-              "rounded-md border border-border px-3 py-1 text-xs text-muted-foreground transition-colors",
+              "rounded-md border border-border px-3 py-1 text-xs text-muted-foreground transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
               "hover:text-foreground hover:bg-muted",
               "active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",
               current <= 1 ? "pointer-events-none opacity-40" : "",
@@ -125,7 +125,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
             disabled={current >= totalPages}
             onClick={() => setPage(current + 1)}
             className={cn(
-              "rounded-md border border-border px-3 py-1 text-xs text-muted-foreground transition-colors",
+              "rounded-md border border-border px-3 py-1 text-xs text-muted-foreground transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
               "hover:text-foreground hover:bg-muted",
               "active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",
               current >= totalPages ? "pointer-events-none opacity-40" : "",
