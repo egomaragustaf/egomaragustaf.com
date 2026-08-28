@@ -142,4 +142,7 @@
   p {
     @apply text-sm;
   }
+  li {
+    @apply text-sm;
+  }
 }
