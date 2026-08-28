@@ -44,9 +44,11 @@ function ExternalButtons({
 function CardMedia({
   project,
   imageClass,
+  priority,
 }: {
   project: Project;
   imageClass: string;
+  priority?: boolean;
 }) {
   return (
     <div className={imageClass}>
@@ -55,6 +57,7 @@ function CardMedia({
           src={project.image}
           alt={project.title}
           fill
+          priority={priority}
           sizes="(max-width: 640px) 100vw, 20rem"
           className="object-cover transition-transform duration-200 ease-out group-hover/card:scale-[1.02] motion-reduce:transition-none"
         />
@@ -92,9 +95,11 @@ function CardBody({ project }: { project: Project }) {
 export function ProjectCard({
   project,
   featured = false,
+  priority = false,
 }: {
   project: Project;
   featured?: boolean;
+  priority?: boolean;
 }) {
   const imageClass = cn(
     "relative overflow-hidden bg-muted",
@@ -112,7 +117,7 @@ export function ProjectCard({
           "motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100",
         )}
       >
-        <CardMedia project={project} imageClass={imageClass} />
+        <CardMedia project={project} imageClass={imageClass} priority={priority} />
         <div className="flex flex-1 flex-col gap-2 p-4">
           <div className="flex items-start justify-between gap-2">
             <h3 className="font-semibold leading-tight">{project.title}</h3>

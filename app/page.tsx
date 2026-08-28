@@ -61,7 +61,7 @@ export default function Home() {
               <h2 className="text-xl font-bold">Featured Project</h2>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 8}>
-              <ProjectCard project={featuredProject} featured />
+              <ProjectCard project={featuredProject} featured priority />
             </BlurFade>
           </div>
         </section>
