@@ -98,7 +98,7 @@ export function ProjectCard({
 }) {
   const imageClass = cn(
     "relative overflow-hidden bg-muted",
-    featured ? "sm:w-40 md:w-52 aspect-[4/3] sm:aspect-auto" : "aspect-[4/3]",
+    featured ? "sm:w-40 md:w-52 aspect-[4/3]" : "aspect-[4/3]",
   );
 
   if (featured) {
