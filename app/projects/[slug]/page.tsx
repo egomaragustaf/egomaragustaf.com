@@ -26,8 +26,10 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       </BlurFade>
       <BlurFade delay={BLUR_FADE_DELAY * 2}>
         <article className="prose dark:prose-invert max-w-none">
-          <h1>{project.title}</h1>
-          <p className="not-prose text-sm text-muted-foreground">
+          <h1 className="not-prose text-2xl font-semibold tracking-tight sm:text-3xl">
+            {project.title}
+          </h1>
+          <p className="not-prose text-base text-muted-foreground">
             {project.description}
           </p>
           <Project />

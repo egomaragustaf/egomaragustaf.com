@@ -20,7 +20,7 @@ export function PostCard({ post, featured = false }: { post: Post; featured?: bo
         )}
       >
         {post.image ? (
-          <div className="relative aspect-[4/3] overflow-hidden bg-muted sm:w-40 md:w-52 sm:aspect-auto">
+          <div className="relative aspect-[4/3] overflow-hidden bg-muted sm:w-56 md:w-64">
             <Image
               src={post.image}
               alt={post.title}
@@ -32,7 +32,9 @@ export function PostCard({ post, featured = false }: { post: Post; featured?: bo
         ) : null}
         <div className="flex flex-1 flex-col gap-1 p-4">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="font-semibold leading-tight">{post.title}</h3>
+            <h3 className="text-base font-semibold leading-tight sm:text-lg">
+              {post.title}
+            </h3>
             <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 motion-reduce:transition-none" />
           </div>
           <p className="text-sm text-muted-foreground line-clamp-2">{post.description}</p>

@@ -70,7 +70,9 @@ function CardBody({ project }: { project: Project }) {
   return (
     <div className="flex flex-1 flex-col gap-2 p-4">
       <div className="flex items-start justify-between gap-2">
-        <h3 className="font-semibold leading-tight">{project.title}</h3>
+        <h3 className="text-base font-semibold leading-tight sm:text-lg">
+          {project.title}
+        </h3>
         <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 motion-reduce:transition-none" />
       </div>
       <p className="text-sm text-muted-foreground line-clamp-2">
@@ -103,42 +105,53 @@ export function ProjectCard({
 }) {
   const imageClass = cn(
     "relative overflow-hidden bg-muted",
-    featured ? "sm:w-40 md:w-52 aspect-[4/3]" : "aspect-[4/3]",
+    featured ? "aspect-[4/3] sm:w-56 md:w-64" : "aspect-[4/3]",
   );
 
   if (featured) {
     return (
       <div
         className={cn(
-          "group/card relative flex overflow-hidden rounded-xl border border-border bg-card sm:flex-row",
+          "group/card relative flex flex-col overflow-hidden rounded-xl border border-border bg-card sm:flex-row",
           "transition-all duration-200 ease-out",
           "hover:-translate-y-0.5 hover:shadow-lg",
-          "active:scale-[0.98]",
           "motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100",
         )}
       >
-        <CardMedia project={project} imageClass={imageClass} priority={priority} />
-        <div className="flex flex-1 flex-col gap-2 p-4">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="font-semibold leading-tight">{project.title}</h3>
-            <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 motion-reduce:transition-none" />
-          </div>
-          <p className="text-sm text-muted-foreground line-clamp-2">
-            {project.description}
-          </p>
-          {project.tags.length > 0 ? (
-            <div className="flex flex-wrap gap-1">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground"
-                >
-                  {tag}
-                </span>
-              ))}
+        <Link
+          href={`/projects/${project.slug}`}
+          className="flex-none active:scale-[0.98] motion-reduce:active:scale-100"
+        >
+          <CardMedia project={project} imageClass={imageClass} priority={priority} />
+        </Link>
+        <div className="flex min-w-0 flex-1 flex-col">
+          <Link
+            href={`/projects/${project.slug}`}
+            className="flex flex-1 flex-col gap-1.5 p-4 active:scale-[0.98] motion-reduce:active:scale-100"
+          >
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="text-base font-semibold leading-tight sm:text-lg">
+                {project.title}
+              </h3>
+              <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 motion-reduce:transition-none" />
             </div>
-          ) : null}
-          <div className="mt-auto pt-2">
+            <p className="text-sm text-muted-foreground line-clamp-2">
+              {project.description}
+            </p>
+            {project.tags.length > 0 ? (
+              <div className="flex flex-wrap gap-1">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </Link>
+          <div className="px-4 pb-4">
             <ExternalButtons website={project.website} github={project.github} />
           </div>
         </div>

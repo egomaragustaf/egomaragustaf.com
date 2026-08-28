@@ -12,8 +12,8 @@ export default function Blog() {
   return (
     <section id="about">
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <h2 className="tracking-tight mb-2">About</h2>
-        <p className="text-muted-foreground mb-8">
+        <h1 className="text-2xl font-semibold tracking-tight mb-2">About</h1>
+        <p className="text-base text-muted-foreground mb-8">
           An insightful glimpse into who I am – because every detail adds depth
           to the canvas of life.
         </p>

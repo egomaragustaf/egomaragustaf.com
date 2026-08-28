@@ -14,7 +14,7 @@ export default function ProjectsPage() {
     <section id="projects">
       <BlurFade delay={BLUR_FADE_DELAY}>
         <h1 className="text-2xl font-semibold tracking-tight mb-2">Projects</h1>
-        <p className="text-sm text-muted-foreground mb-8">
+        <p className="text-base text-muted-foreground mb-8">
           A selection of things I&apos;ve built.
         </p>
       </BlurFade>
