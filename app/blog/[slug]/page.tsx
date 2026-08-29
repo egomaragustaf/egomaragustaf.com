@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-5 sm:p-6">
+            <div className="absolute bottom-0 left-0 p-5 sm:p-6 space-y-2">
               <h1 className="text-2xl font-bold tracking-tight text-white drop-shadow-sm sm:text-3xl">
                 {post.title}
               </h1>

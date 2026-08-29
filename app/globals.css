@@ -140,9 +140,9 @@
   }
 
   p {
-    @apply text-sm;
+    @apply text-base;
   }
   li {
-    @apply text-sm;
+    @apply text-base;
   }
 }

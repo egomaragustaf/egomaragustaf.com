@@ -1,0 +1,182 @@
+---
+title: "Frontend Self Code Review: Simple Things Before Creating a Pull Request"
+description: "A practical guide to self-reviewing your frontend code before opening a PR — states, race conditions, naming, semantics, and maintainability."
+date: "2026-08-29"
+tags: ["writing", "software"]
+featured: false
+image: "/frontend-self-code-review.webp"
+---
+
+## Background
+
+For over three years as a software developer, I've worked in teams that use code review. At first, I assumed a feature was done once its core functionality worked.
+
+Reviewers soon asked questions that did not seem directly related to functionality:
+
+> Can this component be broken down?
+
+> If another developer has to modify this code later, will they understand it easily?
+
+Those questions may sound like coding style concerns, but they reflect a larger responsibility. Code is likely to be modified, fixed, expanded, or analyzed by someone else months or years after it is written.
+
+Self-review is not about analyzing every line indefinitely. It is a short pause after finishing a feature to inspect the code from the perspective of a user, a reviewer, and the next developer who will maintain it.
+
+## 1. Look Beyond the Happy Path
+
+The first thing I check is what happens when the normal flow breaks.
+
+If the app runs normally, data displays correctly, and the UI matches the requirements, the feature may seem complete. But real applications also need to handle:
+
+- successful and failed responses
+- slow requests, timeouts, or no response
+- `undefined` or `null` data
+- repeated user actions
+- inconsistent transitions between states
+
+The question I ask is:
+
+> How does it behave when something doesn't go as expected?
+
+This often reveals problems that are invisible when testing only the happy path. A failed request should provide useful feedback, a slow request should communicate that work is in progress, and an empty response should not become a confusing blank screen.
+
+## 2. Model State and Async Work Together
+
+When reviewing a feature that makes an API request, I treat state as part of the application's behavior, not just as a variable containing data.
+
+A request can move through several valid states:
+
+```
+Loading -> Success
+Loading -> Error
+Loading -> Empty
+Loading -> Timeout -> Retry
+```
+
+The important question is not only whether each state exists, but whether the transitions between them are correct. For example, could the component produce this combination?
+
+```
+isLoading = false
+error = undefined
+```
+
+Or this one?
+
+```
+isLoading = true
+error = "Something went wrong"
+```
+
+These combinations are not automatically wrong. They depend on the design. What matters is knowing which combinations are valid and ensuring the code cannot accidentally produce states that should not occur.
+
+### Avoid Duplicate Requests
+
+Duplicate API calls are easy to introduce. A request might run when the page loads, then again from a `useEffect` or `watch` mechanism, and once more after a user event.
+
+Each trigger may look reasonable in isolation, but together they can cause unnecessary work or inconsistent data. I ask:
+
+> Does this API really need to be called this many times?
+
+Not every repeated request is a bug. The important thing is that each call is intentional and has a clear reason.
+
+### Watch for Race Conditions
+
+Asynchronous operations do not guarantee that the request sent last will finish first:
+
+```
+Request A --------------------------> complete later
+Request B -------------> complete first
+```
+
+If Request B updates the state with the latest data and Request A completes afterward, the older response can overwrite the newer state.
+
+When a request can be triggered multiple times, I check:
+
+- What happens when the user acts twice in quick succession?
+- Could an older response overwrite the latest state?
+- Does the previous request need to be canceled?
+- Will the response still be relevant when it completes?
+- Do loading and error states remain consistent during concurrent requests?
+
+The solution does not always need to be complex. The potential issue simply needs to be considered before the feature is considered complete.
+
+## 3. Review the Experience, Not Just the Code
+
+After reviewing the implementation, I look at the feature from the user's perspective:
+
+- Does the user receive feedback when the API fails?
+- Is it clear that the app is still processing a slow request?
+- Is there a useful empty state instead of a blank screen?
+- Does repeated clicking produce unexpected behavior?
+
+These questions connect the technical implementation to the behavior users actually experience. Good state handling is not only about avoiding bugs; it is also about making the interface understandable.
+
+## 4. Remove Code That No Longer Helps
+
+Before opening a Pull Request, I check what was left behind during development:
+
+- `console.log()` statements used for debugging
+- unused imports and variables
+- functions or components that are no longer called
+- duplicate code
+- workarounds that are no longer needed
+- old implementations commented out in the file
+
+Unused code may not cause an immediate bug, but it makes the next change harder. If similar code appears more than once, I consider extracting a function, utility, or shared component.
+
+However, not all similar code needs an abstraction. Too many abstractions can make a small feature harder to follow.
+
+> Will maintenance really be easier if this code becomes shared?
+
+If the answer is no, keeping the code local and simple may be the better choice.
+
+## 5. Make the Code Easy to Maintain
+
+I also review the code as if I were seeing it for the first time.
+
+### Use Clear Names and Semantic HTML
+
+Names such as these are technically valid, but they do not explain much:
+
+```jsx
+const temp = ...
+const data = ...
+const result = ...
+```
+
+If a variable stores a list of patients, `patients` is clearer than `data`. Names should communicate purpose, not only type or temporary value.
+
+The same principle applies to HTML. If an element behaves like a button, use `<button>` instead of a `<div>` with an `onClick` attribute. Semantic HTML improves accessibility and provides useful built-in behavior.
+
+### Follow Existing Structure
+
+I check whether the new code follows the project's established patterns:
+
+- import order
+- props and state placement
+- method and handler organization
+- helper functions
+- component structure
+
+Consistency makes code easier to scan, but it does not mean blindly copying every old pattern. I still ask why the project uses a particular approach and whether it fits the current feature.
+
+### Reuse Before Reinventing
+
+Before creating a new API helper, error handling pattern, utility, or UI component, I look for an existing implementation.
+
+Reusing a proven approach keeps behavior consistent and avoids unnecessary abstractions. A new approach can still be justified when the existing one is too limited, only works in specific conditions, or has flaws that need to be addressed.
+
+## Final Checklist
+
+Before creating a Pull Request, I pause and ask:
+
+- Does the feature handle failure, loading, empty, and timeout states?
+- Can repeated actions create duplicate requests or race conditions?
+- Are all state combinations valid and understandable?
+- Does the user receive useful feedback in every important state?
+- Is there unnecessary or commented out code to remove?
+- Are names, HTML elements, and component structure clear?
+- Does the project already have a utility or component I can reuse?
+
+Writing code is not only about making something work. It is also about making the result understandable for the user and maintainable for the next developer.
+
+> **If I have to change this code six months from now, will I be grateful to the version of myself who wrote it today?**
