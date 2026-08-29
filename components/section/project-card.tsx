@@ -4,6 +4,7 @@ import { ArrowUpRight, Globe } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/lib/content";
+import { BLUR_DATA_URL } from "@/lib/image";
 
 function ExternalButtons({
   website,
@@ -56,6 +57,8 @@ function CardMedia({
           alt={project.title}
           fill
           priority={priority}
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
           sizes="(max-width: 640px) 100vw, 20rem"
           className="object-cover transition-transform duration-200 ease-out group-hover/card:scale-[1.02] motion-reduce:transition-none"
         />

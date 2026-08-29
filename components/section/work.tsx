@@ -25,8 +25,9 @@ function LogoImage({
       <Image
         src={src}
         alt={alt}
-        width={10}
-        height={10}
+        width={40}
+        height={40}
+        sizes="2.5rem"
         className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
       />
     </a>

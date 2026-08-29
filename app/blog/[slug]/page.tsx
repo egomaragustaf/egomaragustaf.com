@@ -6,6 +6,7 @@ import { formatDate } from "@/lib/format";
 import { BackButton } from "@/components/section/back-button";
 import BlurFade from "@/components/blur-fade";
 import { BLUR_FADE_DELAY } from "../../config/config-ui";
+import { BLUR_DATA_URL } from "@/lib/image";
 
 export const dynamicParams = false;
 
@@ -77,6 +78,8 @@ export default async function Page({ params }: { params: Promise<Params> }) {
                 alt={post.title}
                 fill
                 priority
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
                 sizes="(max-width: 768px) 100vw, 42rem"
                 className="object-cover"
               />

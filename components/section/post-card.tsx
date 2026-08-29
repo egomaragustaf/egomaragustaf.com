@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { formatDate } from "@/lib/format";
 import type { Post } from "@/lib/content";
+import { BLUR_DATA_URL } from "@/lib/image";
 
 export function PostCard({
   post,
@@ -29,8 +30,10 @@ export function PostCard({
             <Image
               src={post.image}
               alt={post.title}
-              fill
-              sizes="(max-width: 640px) 100vw, 20rem"
+               fill
+               placeholder="blur"
+               blurDataURL={BLUR_DATA_URL}
+               sizes="(max-width: 640px) 100vw, 20rem"
               className="object-cover transition-transform duration-200 ease-out group-hover/card:scale-[1.02] motion-reduce:transition-none"
             />
           </div>
@@ -80,8 +83,10 @@ export function PostCard({
           <Image
             src={post.image}
             alt={post.title}
-            fill
-            sizes="5rem"
+           fill
+           placeholder="blur"
+           blurDataURL={BLUR_DATA_URL}
+           sizes="5rem"
             className="object-cover transition-transform duration-200 ease-out group-hover/card:scale-[1.02] motion-reduce:transition-none"
           />
         </div>
