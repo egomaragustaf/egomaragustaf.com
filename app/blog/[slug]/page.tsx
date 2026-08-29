@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/content";
 import { formatDate } from "@/lib/format";
 import { BackButton } from "@/components/section/back-button";
@@ -9,6 +10,49 @@ import { BLUR_FADE_DELAY } from "../../config/config-ui";
 export const dynamicParams = false;
 
 type Params = { slug: string };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getAllPosts().find((p) => p.slug === slug);
+
+  if (!post) return {};
+
+  const imageUrl = `/blog/${slug}/opengraph-image`;
+  const articleUrl = `/blog/${slug}`;
+
+  return {
+    title: post.title,
+    description: post.description,
+    alternates: {
+      canonical: articleUrl,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: articleUrl,
+      type: "article",
+      publishedTime: post.date,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [imageUrl],
+    },
+  };
+}
 
 export function generateStaticParams(): { slug: string }[] {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -40,15 +84,15 @@ export default async function Page({ params }: { params: Promise<Params> }) {
               <h1 className="text-2xl font-bold tracking-tight text-white drop-shadow-sm sm:text-3xl">
                 {post.title}
               </h1>
-               <div className="flex flex-col gap-1">
-                 <time className="text-sm tabular-nums text-white/80">
-                   {formatDate(post.date)}
-                 </time>
-                 <span className="text-sm text-white/70">
-                   {post.readingTime} min read
-                 </span>
-               </div>
-             </div>
+              <div className="flex flex-col gap-1">
+                <time className="text-sm tabular-nums text-white/80">
+                  {formatDate(post.date)}
+                </time>
+                <span className="text-sm text-white/70">
+                  {post.readingTime} min read
+                </span>
+              </div>
+            </div>
           </header>
         </BlurFade>
       ) : (

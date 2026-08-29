@@ -22,8 +22,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://egomaragustaf.com"),
   title: "Ego Maragustaf",
   description: "Ego Maragustaf",
+  openGraph: {
+    siteName: "Ego Maragustaf",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
