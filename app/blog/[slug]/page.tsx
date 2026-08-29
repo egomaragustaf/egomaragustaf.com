@@ -40,10 +40,15 @@ export default async function Page({ params }: { params: Promise<Params> }) {
               <h1 className="text-2xl font-bold tracking-tight text-white drop-shadow-sm sm:text-3xl">
                 {post.title}
               </h1>
-              <time className="text-sm tabular-nums text-white/80">
-                {formatDate(post.date)}
-              </time>
-            </div>
+               <div className="flex flex-col gap-1">
+                 <time className="text-sm tabular-nums text-white/80">
+                   {formatDate(post.date)}
+                 </time>
+                 <span className="text-sm text-white/70">
+                   {post.readingTime} min read
+                 </span>
+               </div>
+             </div>
           </header>
         </BlurFade>
       ) : (
