@@ -70,25 +70,27 @@ export default async function Page({ params }: { params: Promise<Params> }) {
       </BlurFade>
       {post.image ? (
         <BlurFade delay={BLUR_FADE_DELAY * 2}>
-          <header className="relative aspect-[16/9] w-full overflow-hidden rounded-xl">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              priority
-              sizes="(max-width: 640px) 100vw, 42rem"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-            <div className="absolute bottom-0 left-0 p-5 sm:p-6 space-y-2">
-              <h1 className="text-2xl font-bold tracking-tight text-white drop-shadow-sm sm:text-3xl">
+          <header className="space-y-4">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl md:aspect-[16/9]">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 42rem"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            </div>
+            <div className="space-y-2">
+              <h1 className="break-words text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl">
                 {post.title}
               </h1>
               <div className="flex flex-col gap-1">
-                <time className="text-sm tabular-nums text-white/80">
+                <time className="text-sm tabular-nums text-muted-foreground">
                   {formatDate(post.date)}
                 </time>
-                <span className="text-sm text-white/70">
+                <span className="text-sm text-muted-foreground">
                   {post.readingTime} min read
                 </span>
               </div>

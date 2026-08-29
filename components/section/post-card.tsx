@@ -22,10 +22,10 @@ export function PostCard({
           "hover:-translate-y-0.5 hover:shadow-lg",
           "active:scale-[0.98]",
           "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
-          "sm:flex-row",
+           "md:flex-row",
         )}>
         {post.image ? (
-          <div className="relative aspect-[4/3] overflow-hidden bg-muted sm:w-56 md:w-64">
+           <div className="relative aspect-[4/3] overflow-hidden bg-muted md:w-56">
             <Image
               src={post.image}
               alt={post.title}
@@ -68,14 +68,15 @@ export function PostCard({
     <Link
       href={`/blog/${post.slug}`}
       className={cn(
-        "group/card relative flex flex-row items-center gap-4 overflow-hidden rounded-xl border border-border bg-card p-3",
+         "group/card relative flex flex-col overflow-hidden rounded-xl border border-border bg-card",
+         "md:flex-row md:items-center md:gap-4 md:p-3",
         "transition-all duration-200 ease-out",
         "hover:-translate-y-0.5 hover:shadow-lg",
         "active:scale-[0.98]",
         "motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100",
       )}>
       {post.image ? (
-        <div className="relative size-16 shrink-0 overflow-hidden rounded-lg bg-muted sm:size-20">
+         <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-muted md:size-20 md:rounded-lg">
           <Image
             src={post.image}
             alt={post.title}
@@ -85,7 +86,7 @@ export function PostCard({
           />
         </div>
       ) : null}
-      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+       <div className="flex min-w-0 flex-1 flex-col gap-0.5 p-4 md:p-0">
         <div className="flex items-start justify-between gap-2">
           <h3 className="text-sm font-medium leading-snug text-foreground">
             {post.title}
