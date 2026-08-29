@@ -20,7 +20,10 @@ export default function Blog() {
         </p>
       </BlurFade>
       <BlurFade delay={BLUR_FADE_DELAY * 5}>
-        <Suspense fallback={<div className="text-sm text-muted-foreground">Loading…</div>}>
+        <Suspense
+          fallback={
+            <div className="text-sm text-muted-foreground">Loading…</div>
+          }>
           <BlogList posts={posts} />
         </Suspense>
       </BlurFade>

@@ -5,7 +5,13 @@ import { cn } from "@/lib/utils";
 import { formatDate } from "@/lib/format";
 import type { Post } from "@/lib/content";
 
-export function PostCard({ post, featured = false }: { post: Post; featured?: boolean }) {
+export function PostCard({
+  post,
+  featured = false,
+}: {
+  post: Post;
+  featured?: boolean;
+}) {
   if (featured) {
     return (
       <Link
@@ -17,8 +23,7 @@ export function PostCard({ post, featured = false }: { post: Post; featured?: bo
           "active:scale-[0.98]",
           "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
           "sm:flex-row",
-        )}
-      >
+        )}>
         {post.image ? (
           <div className="relative aspect-[4/3] overflow-hidden bg-muted sm:w-56 md:w-64">
             <Image
@@ -37,14 +42,15 @@ export function PostCard({ post, featured = false }: { post: Post; featured?: bo
             </h3>
             <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 motion-reduce:transition-none" />
           </div>
-          <p className="text-sm text-muted-foreground line-clamp-2">{post.description}</p>
+          <p className="text-sm text-muted-foreground line-clamp-2">
+            {post.description}
+          </p>
           {post.tags.length > 0 ? (
             <div className="mt-1 flex flex-wrap gap-1">
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground"
-                >
+                  className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground">
                   {tag}
                 </span>
               ))}
@@ -67,8 +73,7 @@ export function PostCard({ post, featured = false }: { post: Post; featured?: bo
         "hover:-translate-y-0.5 hover:shadow-lg",
         "active:scale-[0.98]",
         "motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100",
-      )}
-    >
+      )}>
       {post.image ? (
         <div className="relative size-16 shrink-0 overflow-hidden rounded-lg bg-muted sm:size-20">
           <Image
@@ -82,10 +87,14 @@ export function PostCard({ post, featured = false }: { post: Post; featured?: bo
       ) : null}
       <div className="flex min-w-0 flex-1 flex-col gap-0.5">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="text-sm font-medium leading-snug text-foreground">{post.title}</h3>
+          <h3 className="text-sm font-medium leading-snug text-foreground">
+            {post.title}
+          </h3>
           <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 motion-reduce:transition-none" />
         </div>
-        <p className="line-clamp-1 text-sm text-muted-foreground">{post.description}</p>
+        <p className="line-clamp-1 text-sm text-muted-foreground">
+          {post.description}
+        </p>
         <div className="mt-0.5 flex items-center gap-2">
           <time className="text-xs tabular-nums text-muted-foreground">
             {formatDate(post.date)}
@@ -93,8 +102,7 @@ export function PostCard({ post, featured = false }: { post: Post; featured?: bo
           {post.tags.slice(0, 2).map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-border px-1.5 py-0 text-[10px] text-muted-foreground"
-            >
+              className="rounded-full border border-border px-1.5 py-0 text-[10px] text-muted-foreground">
               {tag}
             </span>
           ))}

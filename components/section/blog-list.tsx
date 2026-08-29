@@ -25,15 +25,17 @@ function Chip({
         active
           ? "border-foreground/20 bg-muted text-foreground"
           : "border-border text-muted-foreground hover:text-foreground hover:bg-muted",
-      )}
-    >
+      )}>
       {children}
     </button>
   );
 }
 
 export function BlogList({ posts }: { posts: Post[] }) {
-  const [tag, setTag] = useQueryState("tag", { defaultValue: "", shallow: true });
+  const [tag, setTag] = useQueryState("tag", {
+    defaultValue: "",
+    shallow: true,
+  });
   const [q, setQ] = useQueryState("q", {
     defaultValue: "",
     shallow: true,
@@ -76,8 +78,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
           onClick={() => {
             setTag("");
             setPage(1);
-          }}
-        >
+          }}>
           All
         </Chip>
         {allTags.map((t) => (
@@ -87,8 +88,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
             onClick={() => {
               setTag(t);
               setPage(1);
-            }}
-          >
+            }}>
             {t}
           </Chip>
         ))}
@@ -113,8 +113,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
               "hover:text-foreground hover:bg-muted",
               "active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",
               current <= 1 ? "pointer-events-none opacity-40" : "",
-            )}
-          >
+            )}>
             Prev
           </button>
           <span className="text-xs tabular-nums text-muted-foreground">
@@ -129,8 +128,7 @@ export function BlogList({ posts }: { posts: Post[] }) {
               "hover:text-foreground hover:bg-muted",
               "active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",
               current >= totalPages ? "pointer-events-none opacity-40" : "",
-            )}
-          >
+            )}>
             Next
           </button>
         </div>

@@ -21,8 +21,7 @@ function ExternalButtons({
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Website"
-          className="rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-muted active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
-        >
+          className="rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-muted active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100">
           <Globe className="size-3.5" />
         </a>
       ) : null}
@@ -32,8 +31,7 @@ function ExternalButtons({
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
-          className="rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-muted active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
-        >
+          className="rounded-full border border-border p-1.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-muted active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100">
           <FaGithub className="size-3.5" />
         </a>
       ) : null}
@@ -83,8 +81,7 @@ function CardBody({ project }: { project: Project }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground"
-            >
+              className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground">
               {tag}
             </span>
           ))}
@@ -116,19 +113,20 @@ export function ProjectCard({
           "transition-all duration-200 ease-out",
           "hover:-translate-y-0.5 hover:shadow-lg",
           "motion-reduce:transition-none motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100",
-        )}
-      >
+        )}>
         <Link
           href={`/projects/${project.slug}`}
-          className="flex-none active:scale-[0.98] motion-reduce:active:scale-100"
-        >
-          <CardMedia project={project} imageClass={imageClass} priority={priority} />
+          className="flex-none active:scale-[0.98] motion-reduce:active:scale-100">
+          <CardMedia
+            project={project}
+            imageClass={imageClass}
+            priority={priority}
+          />
         </Link>
         <div className="flex min-w-0 flex-1 flex-col">
           <Link
             href={`/projects/${project.slug}`}
-            className="flex flex-1 flex-col gap-1.5 p-4 active:scale-[0.98] motion-reduce:active:scale-100"
-          >
+            className="flex flex-1 flex-col gap-1.5 p-4 active:scale-[0.98] motion-reduce:active:scale-100">
             <div className="flex items-start justify-between gap-2">
               <h3 className="text-base font-semibold leading-tight sm:text-lg">
                 {project.title}
@@ -143,8 +141,7 @@ export function ProjectCard({
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground"
-                  >
+                    className="rounded-full border border-border px-2 py-0.5 text-xs text-muted-foreground">
                     {tag}
                   </span>
                 ))}
@@ -152,7 +149,10 @@ export function ProjectCard({
             ) : null}
           </Link>
           <div className="px-4 pb-4">
-            <ExternalButtons website={project.website} github={project.github} />
+            <ExternalButtons
+              website={project.website}
+              github={project.github}
+            />
           </div>
         </div>
       </div>
@@ -166,12 +166,10 @@ export function ProjectCard({
         "transition-all duration-200 ease-out",
         "hover:-translate-y-0.5 hover:shadow-lg",
         "motion-reduce:transition-none motion-reduce:hover:translate-y-0",
-      )}
-    >
+      )}>
       <Link
         href={`/projects/${project.slug}`}
-        className="flex flex-1 flex-col active:scale-[0.98] motion-reduce:active:scale-100"
-      >
+        className="flex flex-1 flex-col active:scale-[0.98] motion-reduce:active:scale-100">
         <CardMedia project={project} imageClass={imageClass} />
         <CardBody project={project} />
       </Link>

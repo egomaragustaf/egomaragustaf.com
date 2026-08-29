@@ -18,27 +18,29 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">Software Engineer</p>
         </div>
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">General</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            General
+          </p>
           {generalLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="w-fit text-xs text-muted-foreground transition-colors hover:text-foreground active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
-            >
+              className="w-fit text-xs text-muted-foreground transition-colors hover:text-foreground active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100">
               {l.label}
             </Link>
           ))}
         </div>
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Resources</p>
+          <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+            Resources
+          </p>
           {resources.map(([name, s]) => (
             <a
               key={name}
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-fit text-xs text-muted-foreground transition-colors hover:text-foreground active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100"
-            >
+              className="w-fit text-xs text-muted-foreground transition-colors hover:text-foreground active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100">
               {name}
             </a>
           ))}

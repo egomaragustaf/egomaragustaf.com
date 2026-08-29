@@ -27,7 +27,9 @@ export type Post = {
 const PROJECTS_DIR = path.join(process.cwd(), "content", "projects");
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 
-function readDir(dir: string): { slug: string; data: Record<string, unknown> }[] {
+function readDir(
+  dir: string,
+): { slug: string; data: Record<string, unknown> }[] {
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
