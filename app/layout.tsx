@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://egomaragustaf.com"),
-  title: "Ego Maragustaf",
+  title: "Ego Maragustaf | Software Engineer",
   description: "Ego Maragustaf",
   openGraph: {
     siteName: "Ego Maragustaf",
